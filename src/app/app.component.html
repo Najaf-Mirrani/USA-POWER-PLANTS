@@ -1,7 +1,53 @@
-<mgl-map
-  [style]="'https://api.maptiler.com/maps/streets/style.json?key=YOUR_MAPTILER_API_KEY_HERE'"
-  [zoom]="[14]"
-  [center]="[16.62662018, 49.2125578]"
->
-<mgl-control mglNavigation position="top-left"></mgl-control>
-</mgl-map>
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="map">
+  <app-menu [@slideInOut]="menuState" [message]="message"
+    [selectedPlant]="selectedPlant"
+    [callbackFunction]="getPlants"></app-menu>
+  <app-title [callbackFunction]="toggleMenu">
+  </app-title>
+  <mgl-map
+    [style]="'https://api.maptiler.com/maps/streets/style.json?key=yQx29lwibM26V4g9IuKK#3.1/41.07343/-92.45494'"
+    [zoom]="[zoom]"
+    [center]="[centerLon,centerLet]">
+    <div *ngFor="let plant of message">
+      <mgl-marker [lngLat]="[plant['Plant longitude'],plant['Plant latitude']]">
+        <div class="marker">
+          <div (click)="setSelected(plant)" class="marker2"><i
+              onMouseOver="this.style.color='#FFC300'; "
+              onMouseOut="this.style.color='#D2042D'"
+              class="fa fa-map-marker" style="font-size:40px;color:rgb(210, 4,
+              45)">
+              <div class="bottom">
+                <img src="https://picsum.photos/id/182/800/450" />
+                <h3>{{plant["Plant name"]}}</h3>
+                <p>A power plant located in <strong>{{plant['Plant state
+                    abbreviation']}}({{plant['Plant longitude']}},
+                    {{plant['Plant longitude']}})</strong> with
+                  <strong>{{plant["Plant-level sector"]}}</strong> plant level
+                  sector and produced <strong>{{plant["Plant
+                    annual
+                    net generation (MWh)"]}}</strong> MWh in year 2021.</p>
+
+                <p *ngIf="!selectedState">click on the marker to load more
+                  information!</p>
+                <div *ngIf="selectedState">
+                  <h3>State Details:</h3>
+                  <p>The State <strong>{{selectedState?selectedState["State
+                      abbreviation"]: "loading..."}}</strong> with overall net
+                    generation
+                    of <strong>{{selectedState?selectedState["State annual net
+                      generation (MWh)"]: "loading..."}}</strong>.A total of
+                    <strong>{{selectedState["State total combustion generation
+                      percent (resource mix)"]}}%</strong> combustion
+                    generation(resource mix) and <strong>{{selectedState["State
+                      total noncombustion generation percent (resource mix)"]}}%</strong>
+                    noncombustion generation percent in year 2021</p>
+                </div>
+              </div>
+            </i></div></div>
+      </mgl-marker>
+    </div>
+    <mgl-control mglNavigation position="top-left"></mgl-control>
+  </mgl-map>
+</div>

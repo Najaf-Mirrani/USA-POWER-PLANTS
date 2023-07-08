@@ -1,5 +1,75 @@
-
 mgl-map {
-  height: 100vh;
+  height: 94vh;
   width: 100%;
+}
+
+p {
+  font-family: Lato;
+}
+
+.map {
+  overflow: hidden;
+}
+
+.margin-class {
+  margin-top: 5px;
+}
+
+.marker {
+  display: inline-block;
+  position: absolute;
+  border-bottom: 1px dotted rgb(220, 4, 4);
+  text-align: left;
+}
+
+.marker h3 {
+  margin: 12px 0;
+}
+
+.marker .bottom {
+  min-width: 200px;
+  /*max-width:400px;*/
+  top: 40px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 20px;
+  color: #666666;
+  background-color: #EEEEEE;
+  font-weight: normal;
+  font-size: 13px;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 99999999;
+  box-sizing: border-box;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.marker:hover .bottom {
+  display: block;
+}
+
+.marker .bottom img {
+  width: 400px;
+}
+
+.marker .bottom i {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -12px;
+  width: 24px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.marker .bottom i::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 50%;
+  transform: translate(-50%, 50%) rotate(45deg);
+  background-color: #EEEEEE;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }

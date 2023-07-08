@@ -1,0 +1,21 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.heading {
+background-color: rgb(29, 26, 26);
+padding-bottom: 10px;
+padding-left: 10px;
+}
+
+.h3 {
+display: inline-flex;
+color: white;
+font-size: larger;
+margin-left: 1%;
+}
+
+.btn {
+  padding-bottom: 3px;
+  display: inline-block;
+}
